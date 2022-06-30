@@ -1,27 +1,19 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import React from 'react';
+import { NavLink } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/Navbartwo.css'
 
 
-
+// Navbar function for Home, Sticky-Note-App, and Payment
 function Navbartwo() {
   return (
-    <Navbar bg="warning" expand="lg">
-      <Container>
-        <Navbar.Brand>Sticky-Note-Home</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link>Home</Nav.Link>
-            <Nav.Link>About Us</Nav.Link>
-            <Nav.Link>Stick-Note-App</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-  );
+    <div id="navbar">
+    <div><NavLink to= "/">Home</NavLink></div>  
+    <div><NavLink to= "./Stickynote.js">Sticky-Note-App</NavLink></div>
+    <div><NavLink to= "./Payment.js">Donate to Charity</NavLink></div>
+</div>
+)
 }
+
 
 export default Navbartwo;

@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Note from './Note';
 import Addnote from './Addnote';
+import { Stickynotecontext } from '../contexts/Stickynotecontext';
 
-const NotesList = ({
-	notes,
-	addNote,
+const NotesList =  ({
 	deleteNote,
 	deleteAllNote,
 	handleEditNote, 
 }) => {
+	const { notes  } = useContext(Stickynotecontext)
+
 	return (
 		<div className='notes-list'>
 			{notes.map((note) => (
@@ -21,7 +22,7 @@ const NotesList = ({
 					handleEditNote={handleEditNote}
 				/>
 			))}
-			<Addnote addNote={addNote} />
+			<Addnote />
 		</div>
 	)
 };

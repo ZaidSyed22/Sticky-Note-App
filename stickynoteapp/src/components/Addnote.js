@@ -1,10 +1,13 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useContext} from 'react';
+import { Stickynotecontext } from '../contexts/Stickynotecontext';
+
 
 	// leaving useState  as "string" to keep the textare empty as default
 	// added handleAddNote as an paramter to have easy access to addNote function
-const Addnote = ({ addNote }) => {
+const Addnote = () => {
 	const [noteText, setNoteText] = useState('')
+	const { addNote  } = useContext(Stickynotecontext)
 
 	// handleChange function updates State evertime the value of the textarea changes
 	const handleChange = (e) => {

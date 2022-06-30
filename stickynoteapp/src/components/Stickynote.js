@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState, useEffect } from 'react';
-import { nanoid } from 'nanoid';
 import NotesList from './NoteList'
 import Darktheme from './Darktheme';
+import { Stickynotecontext } from '../contexts/Stickynotecontext';
 
-
+// extracting all functions to Stickynotecontext object 
 const Stickynote = () => {
-	const [notes, setNotes] = useState([]);
+	const { notes, setNotes,  } = useContext(Stickynotecontext)
 
 	const [darkMode, setDarkMode] = useState(false)
 
@@ -27,18 +27,6 @@ const Stickynote = () => {
 		}
 	}, []);
 
-	// funtion to Add a note, date and id( used nanonId package to generate random unique ID for each stickynote)
-	const addNote = (text) => {
-		const date = new Date();
-		const newNote = {
-			id: nanoid(),
-			text: text,
-			date: date.toLocaleDateString(),
-		};
-		// creates a new array instead of updating the old array/ setNotes causes the components to re-render and update with new data
-		const newNotes = [...notes, newNote]
-		setNotes(newNotes)
-	};
 
 	// function to Delete a note
 	const deleteNote = (id) => {
@@ -65,7 +53,6 @@ const Stickynote = () => {
 					notes={notes.filter((note) =>
 						note.text.toLowerCase()
 					)}
-					addNote={addNote}
 					deleteNote={deleteNote}
 					deleteAllNote={deleteAllNote}
 					handleEditNote={editNote}
